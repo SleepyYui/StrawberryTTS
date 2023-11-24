@@ -1,10 +1,10 @@
 import os
+import string
 
 import gradio as gr
 import numpy as np
 import torch
 from nltk.tokenize import sent_tokenize
-import string
 
 np.random.seed(0)
 
@@ -205,7 +205,6 @@ with gr.Blocks() as lj:
             ljbtn.click(ljsynthesize, inputs=[ljinp], outputs=[ljaudio], concurrency_limit=4)
 
 with gr.Blocks(title="StrawberryTTS", css="footer{display:none !important}", theme=theme) as web:
-
     gr.Markdown("""
     # StrawberryTTS
     TTS based on [StyleTTS2](https://github.com/yl4579/StyleTTS2)
@@ -215,7 +214,7 @@ with gr.Blocks(title="StrawberryTTS", css="footer{display:none !important}", the
     """)
 
     gr.TabbedInterface([libritts, clone, lj, longText, ljlongText],
-                       ['Multi-Voice', 'Voice Cloning', 'LJSpeech', 'Long Text', 'LJSpeech Long Text [Experimental]'])
+                       ['Multi-Voice', 'Voice Cloning', 'LJSpeech', 'Multi-Voice Long Text', 'LJSpeech Long Text [Experimental]'])
     # gr.TabbedInterface([libritts, clone, lj], ['Multi-Voice', 'Voice Cloning', 'LJSpeech'])
 
     gr.Markdown("""
