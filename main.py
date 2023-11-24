@@ -106,12 +106,11 @@ def ljlongsynthesize(text, progress=gr.Progress()):
     if text.strip() == "":
         raise gr.Error("You must enter some text")
     texts = split_and_recombine_text(text)
-    v = voice.lower()
     audios = []
+    noise = torch.randn(1, 1, 256).to('cuda' if torch.cuda.is_available() else 'cpu')
     for t in progress.tqdm(texts):
         audios.append(
-            ljspeechimportable.inference(t, torch.randn(1, 1, 256).to('cuda' if torch.cuda.is_available() else 'cpu'),
-                                         diffusion_steps=lngsteps, embedding_scale=1))
+            ljspeechimportable.inference(t, noise, diffusion_steps=7, embedding_scale=1))
     return (24000, np.concatenate(audios))
 
 
