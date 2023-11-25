@@ -29,3 +29,4 @@ Or on Windows:
 
 ## Other notes
 - For a details, please read the [original README](https://github.com/yl4579/StyleTTS2/blob/main/README.md)
+- Get eSpeak from [here](https://sourceforge.net/projects/espeak/files/latest/download)
